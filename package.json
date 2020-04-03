@@ -3,7 +3,7 @@
 	"displayName": "KubernetesApply",
 	"description": "",
 	"version": "0.0.1",
-	"publisher": "Shai Mendel",
+	"publisher": "ShaiMendel",
 	"engines": {
 		"vscode": "^1.43.0"
 	},
