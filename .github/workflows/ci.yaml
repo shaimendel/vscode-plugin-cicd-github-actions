@@ -61,5 +61,6 @@ jobs:
         uses: JCofman/vscodeaction@master
         env:
           PUBLISHER_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
+          RELEASE_VERSION: ${{ steps.semantic_release.outputs.new_release_version }}
         with:
-          args: publish -p $PUBLISHER_TOKEN ${{ steps.semantic_release.outputs.new_release_version }}
+          args: publish -p $PUBLISHER_TOKEN $RELEASE_VERSION
