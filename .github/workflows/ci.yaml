@@ -38,6 +38,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Release
+        id: semantic_release
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -46,20 +47,19 @@ jobs:
   publish:
     name: Publish
     needs: release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
-      - name: npm install
-        uses: actions/npm@master
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          args: install --unsafe-perm
-      - name: Master
-        uses: actions/bin/filter@master
-        with:
-          args: branch master
+          node-version: 12
+      - name: Install dependencies
+        run: npm install
       - name: Vscode release plugin
         uses: JCofman/vscodeaction@master
         env:
           PUBLISHER_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
         with:
-          args: publish -p $PUBLISHER_TOKEN
+          args: publish -p $PUBLISHER_TOKEN ${{ steps.semantic_release.outputs.new_release_version }}
