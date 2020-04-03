@@ -1,7 +1,7 @@
 {
 	"name": "kubernetesapply",
 	"displayName": "KubernetesApply",
-	"description": "",
+	"description": "Apply and Delete Kubernetes resource files",
 	"version": "0.0.1",
 	"publisher": "ShaiMendel",
 	"engines": {
