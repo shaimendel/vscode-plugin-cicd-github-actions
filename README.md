@@ -1,4 +1,4 @@
-# kubernetesapply README
+# Kubernetes Apply
 
 ## Features
 
