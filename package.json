@@ -4,6 +4,7 @@
 	"description": "Apply and Delete Kubernetes resource files",
 	"version": "0.0.1",
 	"publisher": "ShaiMendel",
+	"icon": "images/apply.png",
 	"engines": {
 		"vscode": "^1.43.0"
 	},
