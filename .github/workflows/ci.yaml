@@ -63,4 +63,4 @@ jobs:
           PUBLISHER_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
           RELEASE_VERSION: ${{ steps.semantic_release.outputs.new_release_version }}
         with:
-          args: publish -p $PUBLISHER_TOKEN $RELEASE_VERSION
+          args: publish $RELEASE_VERSION -p $PUBLISHER_TOKEN 
