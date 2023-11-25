@@ -26,6 +26,10 @@ export function activate(context: vscode.ExtensionContext) {
 		terminal.sendText(`kubectl ${command} -f ${resourcePath}`);
 	}
 
+	let disposableCreate = vscode.commands.registerCommand('kubernetesapply.create', (uri:vscode.Uri) => {
+		runResourceCommand('create', uri);
+	});
+
 	let disposableApply = vscode.commands.registerCommand('kubernetesapply.apply', (uri:vscode.Uri) => {
 		runResourceCommand('apply', uri);
 	});
@@ -34,6 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 		runResourceCommand('delete', uri);
 	});
 
+	context.subscriptions.push(disposableCreate);
 	context.subscriptions.push(disposableApply);
 	context.subscriptions.push(disposableDelete);
 }
