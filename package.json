@@ -2,7 +2,7 @@
 	"name": "kubernetesapply",
 	"displayName": "Kubernetes Apply",
 	"description": "Apply and Delete Kubernetes resource files",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "ShaiMendel",
 	"keywords": ["kubernetes", "apply", "yaml", "kubectl"],
 	"icon": "images/apply.png",
@@ -13,12 +13,17 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCommand:kubernetesapply.create",
 		"onCommand:kubernetesapply.apply",
 		"onCommand:kubernetesapply.delete"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
+			{
+				"command": "kubernetesapply.create",
+				"title": "K8S: Create resource"
+			},
 			{
 				"command": "kubernetesapply.apply",
 				"title": "K8S: Apply resource"
@@ -31,14 +36,19 @@
 		"menus": {
 			"explorer/context": [
 				{
+					"command": "kubernetesapply.create",
+					"group": "kubernetesapplygroup@1",
+					"when": "resourceExtname == .yaml || resourceExtname == .yml"
+				},
+				{
 					"command": "kubernetesapply.apply",
 					"group": "kubernetesapplygroup@1",
-					"when": "resourceExtname == .yaml"
+					"when": "resourceExtname == .yaml || resourceExtname == .yml"
 				},
 				{
 					"command": "kubernetesapply.delete",
 					"group": "kubernetesapplygroup@2",
-					"when": "resourceExtname == .yaml"
+					"when": "resourceExtname == .yaml || resourceExtname == .yml"
 				}
 			]
 		}
